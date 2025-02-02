@@ -1,7 +1,5 @@
 /*
-
 GEREKLİ PAKETLER YÜKLENİYOR...
-
 */
 var http = require('http');
 var express = require('express');
@@ -15,11 +13,14 @@ app.use(express.static(__dirname + '/app/public')); // KULLANICILAR TARAFINDAN E
 
 require('./app/routes')(app); // ROUTE DOSYASI ÇAĞIRILDI
 
+// "Hello World" mesajını döndüren root route eklendi
+app.get('/', function (req, res) {
+    res.send('Hello World');
+});
+
 /*
-
 HTTP SERVER OLUŞTURULDU
-
 */
-http.createServer(app).listen(app.get('port'), function(){
-	console.log('undertaker ' + app.get('port') + ' john cena.');
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('undertaker ' + app.get('port') + ' john cena.');
 });
